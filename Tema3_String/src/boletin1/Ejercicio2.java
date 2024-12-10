@@ -35,10 +35,11 @@ public class Ejercicio2 {
 		while (!contr.equals(intentoContr)) {
 
 			// Comprobamos mediante el metodo compareTo si el intento es mayor
-			// alfabeticamente que la contraseña si es así, mostramos que la cadena introducida es mayor.
+			// alfabeticamente que la contraseña si es así, mostramos que la cadena
+			// introducida es mayor.
 			if (intentoContr.compareTo(contr) > 0) {
 				System.out.println("La cadena introducida es mayor alfabeticamente");
-				//Si no, la cadena introducida es menor.
+				// Si no, la cadena introducida es menor.
 			} else {
 				System.out.println("La cadena introducida es menor alfabeticamente");
 			}
@@ -51,7 +52,7 @@ public class Ejercicio2 {
 
 		// Mensaje de felicitación por acertar la contraseña.
 		System.out.println();
-		System.out.println("Enhorabuena has acertado la contraseña");
+		System.out.println("Enhorabuena has acertado la contraseña.");
 
 		// Cierre de Scanner
 		sc.close();
