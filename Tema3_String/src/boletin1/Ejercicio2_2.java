@@ -28,11 +28,21 @@ public class Ejercicio2_2 {
 		// contraseña, si es así ejecutamos el while.
 		while (!contr.equals(intentoContr)) {
 
+			// Mensaje de aciertos.
+			System.out.println();
+			System.out.print("Caracteres acertados --> ");
+
+			// Con este for recorremos todos los caracteres de la contraseña introducida.
 			for (int i = 0; i < contr.length(); i++) {
 
-				if (i < intentoContr.length())
-				if (contr.charAt(i) == intentoContr.charAt(i)) {
+				// Comprobamos si el indice que va recorriendo nuestra contraseña es menor que
+				// la longitud de la cadena introducida por el jugador 2 para comprobar que no
+				// se salga del array. Y también comprobamos si el caracter de cada cadena en la
+				// misma posición es igual, si es así imprimimos el caracter.
+				if (i < intentoContr.length() && contr.charAt(i) == intentoContr.charAt(i)) {
 					System.out.print(contr.charAt(i));
+
+					// Si no, imprimimos un asterisco.
 				} else
 					System.out.print("*");
 			}
@@ -45,7 +55,7 @@ public class Ejercicio2_2 {
 
 		// Mensaje de felicitación por acertar la contraseña.
 		System.out.println();
-		System.out.println("Enhorabuena has acertado la contraseña");
+		System.out.println("Enhorabuena has acertado la contraseña.");
 
 		// Cierre de Scanner
 		sc.close();
