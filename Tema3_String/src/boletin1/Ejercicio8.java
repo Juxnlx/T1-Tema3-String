@@ -18,6 +18,8 @@ public class Ejercicio8 {
 		// Creamos el array tablaFrase como String para almacenar la frase introducida
 		// por el usuario.
 		String[] tablaFrase;
+		
+		String menor ="";
 
 		// Creamos el Scanner para solicitar la frase por teclado.
 		Scanner sc = new Scanner(System.in);
@@ -29,18 +31,17 @@ public class Ejercicio8 {
 		// Asignamos le asignamos al array tablafrase en cada posición una palabra de la
 		// frase usando el metodo split.
 		tablaFrase = frase.split(" ");
-		
-		System.out.println(Arrays.toString(tablaFrase));
 
 		for (int i = 0; i < tablaFrase.length; i++) {
 			
-			for (int j = i + 1; j < tablaFrase.length; j++) {
-				
+			for (int j = 0; j < tablaFrase.length; j++) {
+				if (tablaFrase[i].compareTo(tablaFrase[j]) < 0) {
+					menor= tablaFrase[i];
+				}
 			}
+			System.out.print(menor + " ");
 		}
 
-		
-		System.out.println(Arrays.toString(tablaFrase));
 		// Cierre de Scanner
 		sc.close();
 
