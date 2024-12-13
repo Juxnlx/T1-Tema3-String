@@ -18,12 +18,10 @@ public class Ejercicio8 {
 		// Creamos el array tablaFrase como String para almacenar la frase introducida
 		// por el usuario.
 		String[] tablaFrase;
-		
-		String menor ="";
 
 		// Creamos el Scanner para solicitar la frase por teclado.
 		Scanner sc = new Scanner(System.in);
-		
+
 		// Le pedimos al usuario que introduzca una frase y la leemos.
 		System.out.println("Introduce una frase --> ");
 		frase = sc.nextLine();
@@ -32,15 +30,18 @@ public class Ejercicio8 {
 		// frase usando el metodo split.
 		tablaFrase = frase.split(" ");
 
-		for (int i = 0; i < tablaFrase.length; i++) {
-			
-			for (int j = 0; j < tablaFrase.length; j++) {
-				if (tablaFrase[i].compareTo(tablaFrase[j]) < 0) {
-					menor= tablaFrase[i];
-				}
-			}
-			System.out.print(menor + " ");
-		}
+		// Para ordenar la frase alfabeticamente usamos el metodo sort para ordenar el
+		// array.
+		Arrays.sort(tablaFrase);
+
+		System.out.println();
+
+		// A nuestra variable frase le hacemos un join para unir de nuevos todas las
+		// palabras de la frase en una unica variable pero de forma ordenada.
+		frase = String.join(" ", tablaFrase);
+
+		// Imprimimos la frase ya ordenada.
+		System.out.print("Palabras de la frase ordenadas --> " + frase);
 
 		// Cierre de Scanner
 		sc.close();
