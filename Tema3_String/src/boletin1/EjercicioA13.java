@@ -79,6 +79,10 @@ public class EjercicioA13 {
 			if (palabra1.indexOf(palabra2.charAt(indice)) < 0) {
 				reslt = false;
 			}
+			
+			if (palabra2.indexOf(palabra1.charAt(indice)) < 0) {
+				reslt = false;
+			}
 
 			// Incrementamos el indice a +1 en cada iteración.
 			indice++;
