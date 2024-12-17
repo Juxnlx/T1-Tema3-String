@@ -52,12 +52,15 @@ public class EjercicioA19 {
 				// a 0 refiriendose a la primera letra, entramos en el bucle.
 				if (i != 0 && j == 0) {
 					// En la variable primerCaracter almacenamos el caracter en mayuscula usando la
-					// clase Character y toUpperCase para poner le primer caracte de la palabra que
+					// clase Character y toUpperCase para poner el primer caracter de la palabra que
 					// estemos recorriendo en mayuscula.
 					primerCaracter = Character.toUpperCase(tablaFrase[i].charAt(0));
-					
-					
-					tablaFrase[i] = tablaFrase[i].replace(tablaFrase[i].charAt(j), primerCaracter);
+
+					// A la palabra que estamos recorriendo la machacamos por el primer caracter en
+					// mayuscula calculado anteriormente, con el resto de la cadena desde la
+					// posicion siguiente hasta el final de la palabra y para ello usamos el metodo
+					// substring.
+					tablaFrase[i] = primerCaracter + tablaFrase[i].substring(1, tablaFrase[i].length());
 				}
 			}
 		}
