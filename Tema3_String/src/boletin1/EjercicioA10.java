@@ -82,14 +82,26 @@ public class EjercicioA10 {
 		// si no se encuentra en el conjunto 1 se devuelve el mismo.
 		char caracterDevolver = c;
 
-		// Creamos este for para recorrer el conjunto1.
-		for (int i = 0; i < conjunto1.length; i++) {
+		// Creamos la variable i para saber cual es la posición que estamos recorriendo
+		// del conjunto 1.
+		int i = 0;
+
+		// Creamos la variable enc como boolean para saber si hemos encontrado el
+		// caracter o no.
+		boolean enc = false;
+
+		// Creamos el while para recorrer el conjunto 1 hasta encontar el caracter, una
+		// vez encontrado nos salimos.
+		while (i < conjunto1.length && !enc) {
 			// Comprobamos si el caracter pasado como parametro se encuentra en el conjunto
 			// 1, si es así caracter a devolver pasa a ser el caracter del conjunto2
 			// correspondiendo a la misma posición.
 			if (c == conjunto1[i]) {
 				caracterDevolver = conjunto2[i];
 			}
+			
+			//Incrementamos en +1 la posición.
+			i++;
 		}
 
 		// Devolvemos el caracter codificado, si es que debe de ser codificado.
