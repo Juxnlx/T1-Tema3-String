@@ -53,24 +53,16 @@ public class EjercicioA17 {
 
 		// Creamos la variable inicio como int para almacenar la posición donde comienza
 		// el comentario.
-		int inicio;
+		int inicio = sentencia.indexOf("/*");
 
 		// Creamos la variable fin como int para almacenar la posición donde termina
 		// el comentario.
-		int fin;
+		int fin = sentencia.indexOf("*/");
 
 		// Comprobamos que siempre que la posición del inicio de comentario y la de fin
 		// sea mayor que 0, entonces ejecutamos las siguientes instrucciones porque eso
 		// significa que hay un comentario en la sentencia.
-		while (sentencia.indexOf("/*") >= 0 && sentencia.indexOf("*/") >= 0) {
-
-			// En la variable inicio almacenamos la posición donde aparece el comentario que
-			// siempre comienza así, /*.
-			inicio = sentencia.indexOf("/*");
-
-			// En la variable fin almacenamos la posición donde aparece el comentario que
-			// siempre termina así, */.
-			fin = sentencia.indexOf("*/");
+		while (inicio >= 0 && fin >= 0) {
 
 			// En comentario almacenamos el trozo de comentario que aparece en la sentencia
 			// gracias a la posición inicio y fin. Indicamos al fin, fin+2 para que tambien
@@ -80,6 +72,15 @@ public class EjercicioA17 {
 			// A sentencia le asignamos una el mismo contenido pero sin comentario gracias a
 			// que con el metodo replace sustituimos el comentario por cadena vacia.
 			sentencia = sentencia.replace(comentario, "");
+
+			// En la variable inicio almacenamos la posición donde aparece el comentario que
+			// siempre comienza así, /*.
+			inicio = sentencia.indexOf("/*");
+
+			// En la variable fin almacenamos la posición donde aparece el comentario que
+			// siempre termina así, */.
+			fin = sentencia.indexOf("*/");
+
 		}
 
 		// Y por ultimo ya que tenemos la sentencia sin comentarios con el metodo
@@ -88,7 +89,7 @@ public class EjercicioA17 {
 		// devuelve la cadena tal cual.
 		sentencia = sentencia.replace("  ", " ").trim();
 
-		//Devolvemos la sentencia sin comentarios.
+		// Devolvemos la sentencia sin comentarios.
 		return sentencia;
 	}
 
