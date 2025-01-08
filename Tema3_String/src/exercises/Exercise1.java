@@ -18,21 +18,21 @@ public class Exercise1 {
 		tablaFrase = frase.toCharArray();
 
 		for (int i = 0; i < tablaFrase.length; i++) {
-			if (tablaFrase[i] == 'Z') {
-				tablaFrase[i] = 'A';
-			} else if (tablaFrase[i] == '9') {
-				tablaFrase[i] = '0';
-			} else if (tablaFrase[i] == ' '){
-				tablaFrase[i] = ' ';
-			} else {
-				tablaFrase[i] = (char) (tablaFrase[i] + 1);
-			}
+			if ((tablaFrase[i] >= 'A' && tablaFrase[i] <= 'Z') || (tablaFrase[i] >= '0' && tablaFrase[i] <= '9')) {
 
+				if (tablaFrase[i] == 'Z') {
+					tablaFrase[i] = 'A';
+				} else if (tablaFrase[i] == '9') {
+					tablaFrase[i] = '0';
+				} else {
+					tablaFrase[i] = (char) (tablaFrase[i] + 1);
+				}
+			}
 		}
 
 		System.out.println("Frase codificada: " + String.copyValueOf(tablaFrase));
 
-		//Cierre de Scanner
+		// Cierre de Scanner
 		sc.close();
 	}
 
