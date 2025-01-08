@@ -18,7 +18,7 @@ public class Exercise1 {
 		tablaFrase = frase.toCharArray();
 
 		for (int i = 0; i < tablaFrase.length; i++) {
-			if ((tablaFrase[i] >= 'A' && tablaFrase[i] <= 'Z') || (tablaFrase[i] >= '0' && tablaFrase[i] <= '9')) {
+			if ((tablaFrase[i] >= 'A' && tablaFrase[i] <= 'Z') || (tablaFrase[i] >= '0' && tablaFrase[i] <= '9')) { 
 
 				if (tablaFrase[i] == 'Z') {
 					tablaFrase[i] = 'A';
