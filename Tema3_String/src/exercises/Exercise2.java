@@ -25,7 +25,8 @@ public class Exercise2 {
 		for (int i = 0; i < tablaFrase.length; i++) {
 			nuevoCaracter = (char) (tablaFrase[i] + distancia);
 
-			if ((tablaFrase[i] >= 'A' && tablaFrase[i] <= 'Z') || (tablaFrase[i] >= '0' && tablaFrase[i] <= '9') || (tablaFrase[i] == ' ')) {
+			if ((tablaFrase[i] >= 'A' && tablaFrase[i] <= 'Z') || (tablaFrase[i] >= '0' && tablaFrase[i] <= '9')
+					|| (tablaFrase[i] == ' ')) {
 				if (nuevoCaracter > 'Z') {
 					tablaFrase[i] = (char) ('A' + (nuevoCaracter - tablaFrase[i]));
 				} else if (nuevoCaracter > '9' && nuevoCaracter < 'A') {
@@ -36,13 +37,12 @@ public class Exercise2 {
 					tablaFrase[i] = nuevoCaracter;
 				}
 
-			} 
+			}
 		}
-			System.out.println("Frase codificada: " + String.copyValueOf(tablaFrase));
+		System.out.println("Frase codificada: " + String.copyValueOf(tablaFrase));
 
-			// Cierre de Scanner
-			sc.close();
-		
+		// Cierre de Scanner
+		sc.close();
 
 	}
 }
