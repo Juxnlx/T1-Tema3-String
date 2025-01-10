@@ -114,7 +114,7 @@ public class EjercicioA15 {
 		// Con el metodo toCharArray relleno la tabla con cada caracter de la frase.
 		tablaFrase = frase.toCharArray();
 
-		// Creamos la variable pos como int para alamcenar el caracter que estamos
+		// Creamos la variable pos como int para almacenar el caracter que estamos
 		// recorriendo con el for.
 		int pos;
 
@@ -133,7 +133,7 @@ public class EjercicioA15 {
 			pos = rand.nextInt(0, tablaFrase.length);
 
 			// Comprobamos que el indice que estamos recorriendo sea distinto a la posición
-			// aleatoria y tanto el caracter de la posición aleatoria y el qeu estamos
+			// aleatoria y tanto el caracter de la posición aleatoria y el que estamos
 			// recorriendo sea distinto a un espacio en blanco. Porque así evitamos que los
 			// espacios se muevan de sitio.
 			if (i != pos && tablaFrase[i] != ' ' && tablaFrase[pos] != ' ') {
