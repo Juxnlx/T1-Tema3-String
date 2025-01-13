@@ -13,7 +13,7 @@ public class Ahorcado {
 
 	// Creamos la la constante NUMINTENTOS para almacenar el número de intentos que
 	// tiene el jugador.
-	static final int NUMINTENTOS = 7;
+	static int NUMINTENTOS = 7;
 
 	// Creamos la variable palabraSecreta como String para almacenar la palabra
 	// secreta que debe de acertar el jugador.
@@ -35,14 +35,28 @@ public class Ahorcado {
 	// consola.
 	static Scanner sc = new Scanner(System.in);
 
+	/*
+	 * CORRECCIONES
+	 * 
+	 * Como controlar que me vuelve a msotrar el menú si introduzco cadenas o
+	 * caracteres.
+	 * 
+	 * Porque no se me actualiza la variable palabraPista cuando la acertamos.
+	 */
 	public static void main(String[] args) {
 
-		//Creamos la variable opcion como int para alamcenar la opción seleccioanda por el usuario en el menu.
+		// Creamos la variable opcion como int para alamcenar la opción seleccioanda por
+		// el usuario en el menu.
 		int opcion;
-		
-		//Creamos la variable letra como char para almacenar la letra que desea probar el usuario.
+
+		// Creamos la variable letra como char para almacenar la letra que desea probar
+		// el usuario.
 		char letra;
-		
+
+		// Creamos la variable palabra como String para almacenar la palabra introducida
+		// por el usuario.
+		String palabra = "";
+
 		// Llamamos a la función generaPalabra para generar la palabra a adivinar.
 		generaPalabra();
 
@@ -56,16 +70,76 @@ public class Ahorcado {
 
 		// Llamamos a la función pintaPista para imprimir los huecos de cada palabra.
 		pintaPista();
-		
-		do {
-			opcion = menu();
-			
-			if (opcion == 1) {
-				System.out.print("Introduce una letra: ");
-				letra = sc.next().charAt(0);
-			}
-		} while 
 
+		// Comprobación de fin de juego.
+		do {
+			// Comprobación de si la opción del usuario es correcta.
+			do {
+				// Asignamos a la variable opcion, lo que nos devuelve la función menu.
+				opcion = menu();
+				// Comprobamos si la opción introducida por el usuario es distinta a menos 1 y
+				// 2, si es así volvemos a preguntar.
+			} while (opcion < 1 || opcion > 2);
+
+			// Comprobamos si la opción es igual a 1.
+			if (opcion == 1) {
+				// Le pedimos al usuario que introduzca una letra y la leemos.
+				System.out.print("Introduce una letra: ");
+				letra = sc.next().toLowerCase().charAt(0);
+
+				// Llamamos a la función compruebaLetra para comprobar si la existe en la
+				// palabraPista, si es así se actualiza. Si no se añade a noAcertadas.
+				compruebaLetra(letra);
+
+				// Comprobamos si la letra que aparece en la variable noAcertadas devuelven las
+				// mismas posiciones contado desde el principio y el final. Así comprobamos que
+				// solo hay una y en ese caso debemos de restar un intento. Y luego compruebo si
+				// la posición de la letra no es -1 porque asi comprobamos que en ese no resten
+				// las que acertamos.
+				if (noAcertadas.indexOf(letra) == noAcertadas.lastIndexOf(letra) && noAcertadas.indexOf(letra) != -1) {
+					NUMINTENTOS--;
+				}
+
+				// Si no es 1 ...
+			} else {
+				// Le pedimos al usuario que introduzca una palabra y la leemos.
+				System.out.print("Introduce una palabra: ");
+				palabra = sc.next().toLowerCase();
+				// Llamamos a la función compruebaPalabra para comprobar si hemos acertado la
+				// palabra, si es así la variable palabraPista se actualiza con la palabra
+				// secreta.
+				compruebaPalabra(palabra);
+
+				// Comprobamos si la palabra es distinta a la palabra que intentamos descubir.
+				// Si es así incrementamos los números de intentos en -1.
+				if (!palabra.equals(palabraSecreta)) {
+					NUMINTENTOS--;
+				}
+			}
+
+			// Llamamos a la función pintaPista para imprimir las letras no acertadas y la
+			// pista.
+			pintaPista();
+			// Imprimimos el número de intentos que nos quedan.
+			System.out.println("Intentos --> " + NUMINTENTOS);
+			System.out.println();
+
+			// Comprobamos si la palabra es distinta a la palabra que intentamos adivinar y
+			// si los números de intentos son distintos de 0 volvemos a preguntar una
+			// opción.
+		} while (!palabra.equals(palabraSecreta) && NUMINTENTOS != 0);
+
+		// Si los intentos son mayor que 0, mostramos un enhorabuena. Significa que
+		// hemos acertado la palabra.
+		if (NUMINTENTOS > 0) {
+			System.out.println("¡¡ENHORABUENA!! HAS ACERTADO");
+			// Si no, mostramos game over porque el número de intentos se ha agotado.
+		} else {
+			System.out.println("GAME OVER");
+		}
+
+		// Cierre de Scanner.
+		sc.close();
 	}
 
 	/**
@@ -104,6 +178,7 @@ public class Ahorcado {
 		// leemos.
 		System.out.print("Introduce una opción: ");
 		opcionMenu = sc.nextInt();
+		System.out.println();
 
 		// Devolvemos la opción seleccionada por el usuario.
 		return opcionMenu;
@@ -119,7 +194,7 @@ public class Ahorcado {
 	public static void compruebaLetra(char letra) {
 
 		if (!palabraSecreta.contains(String.valueOf(letra))) {
-			noAcertadas += letra + ", ";
+			noAcertadas += letra;
 		} else {
 
 			for (int i = 0; i < palabraSecreta.length(); i++) {
@@ -129,6 +204,10 @@ public class Ahorcado {
 				}
 			}
 		}
+
+		// Almacenamos en palabra pista la tablaPalabraPista en forma de cadena con un
+		// valueOf.
+		palabraPista = String.valueOf(tablaPalabraPista);
 	}
 
 	/**
