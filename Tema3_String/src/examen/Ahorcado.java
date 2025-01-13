@@ -27,27 +27,52 @@ public class Ahorcado {
 	// que no se encuentran en la palabra a acertar.
 	static String noAcertadas = "";
 
+	// Creamos el array tablaPalabraPista como char para almacenar las letras que ha
+	// acertado el usuario.
+	static char tablaPalabraPista[];
+
 	// Creamos el Scanner para leer información solicitada por el usuario por
 	// consola.
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 
-		generaPalalabra();
+		//Creamos la variable opcion como int para alamcenar la opción seleccioanda por el usuario en el menu.
+		int opcion;
+		
+		//Creamos la variable letra como char para almacenar la letra que desea probar el usuario.
+		char letra;
+		
+		// Llamamos a la función generaPalabra para generar la palabra a adivinar.
+		generaPalabra();
 
-		System.out.println(palabraSecreta);
+		// Creamos el array tablaPalabraPista como char para almacenar las letras que ha
+		// acertado el usuario.
+		tablaPalabraPista = new char[palabraSecreta.length()];
 
-		compruebaLetra('a');
+		// Usamos el metodo fill para inicializar todas las posiciones del array a guión
+		// bajo.
+		Arrays.fill(tablaPalabraPista, '_');
 
-		System.out.println(palabraPista);
-		System.out.println(noAcertadas);
+		// Llamamos a la función pintaPista para imprimir los huecos de cada palabra.
+		pintaPista();
+		
+		do {
+			opcion = menu();
+			
+			if (opcion == 1) {
+				System.out.print("Introduce una letra: ");
+				letra = sc.next().charAt(0);
+			}
+		} while 
+
 	}
 
 	/**
 	 * Esta función se encarga en almacenar el la variable palabraSecreta una de las
 	 * palabras que se encuentra en el array palabras.
 	 */
-	public static void generaPalalabra() {
+	public static void generaPalabra() {
 
 		// Creamos el Random para generar una posición aleatoria del array palabras.
 		Random rand = new Random();
@@ -89,20 +114,12 @@ public class Ahorcado {
 	 * aparece en la palabra secreta, si es así actualiza la palabraPista con la
 	 * letra. En caso contrario añade la letra a la variable noAcertadas.
 	 * 
-	 * @param letra
+	 * @param letra La letra introducida por el usuario que hay que comprobar.
 	 */
 	public static void compruebaLetra(char letra) {
 
-		// Creamos el array tablaPalabraPista como char para almacenar las letras que ha
-		// acertado el usuario.
-		char tablaPalabraPista[] = new char[palabraSecreta.length()];
-
-		// Usamos el metodo fill para inicializar todas las posiciones del array a guión
-		// bajo.
-		Arrays.fill(tablaPalabraPista, '_');
-
 		if (!palabraSecreta.contains(String.valueOf(letra))) {
-			noAcertadas += letra;
+			noAcertadas += letra + ", ";
 		} else {
 
 			for (int i = 0; i < palabraSecreta.length(); i++) {
@@ -112,6 +129,36 @@ public class Ahorcado {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Esta función se encarga de comprobar que la palabra introducida por parametro
+	 * sea igual a la palabraSecreta.
+	 * 
+	 * @param cadena Palabra introducida por el usuario, pasada por parametro.
+	 */
+	public static void compruebaPalabra(String cadena) {
+
+		// Comprobamos si la cadena pasada como parametro es igual a la palabra secreta,
+		// si se cumple actualizamos la palabra pista con la cadena pasada por
+		// parametro.
+		if (cadena.equals(palabraSecreta)) {
+			palabraPista = cadena;
+		}
+	}
+
+	/**
+	 * Esta función se encarga de imprimir las pistas y las letras no acertadas por
+	 * consola.
+	 */
+	public static void pintaPista() {
+
+		// Almacenamos en palabra pista la tablaPalabraPista en forma de cadena con un
+		// valueOf.
 		palabraPista = String.valueOf(tablaPalabraPista);
+
+		// Imprimimos letras no acertadas y pistas.
+		System.out.println("Letras no acertadas: " + noAcertadas);
+		System.out.println("Pista --> " + palabraPista);
 	}
 }
