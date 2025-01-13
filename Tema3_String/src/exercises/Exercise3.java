@@ -27,7 +27,7 @@ public class Exercise3 {
 
 		// Creamos la variable cont como int para contabilar los intentos que tiene el
 		// jugador.
-		//int cont;
+		int cont;
 
 		// Creamos el Scanner para leer las palabras o letras que va introduciendo el
 		// jugador.

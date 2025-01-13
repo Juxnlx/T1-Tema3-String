@@ -32,8 +32,15 @@ public class Ahorcado {
 	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
+		generaPalalabra();
+
+		System.out.println(palabraSecreta);
+
+		compruebaLetra('a');
+
+		System.out.println(palabraPista);
+		System.out.println(noAcertadas);
 	}
 
 	/**
@@ -78,7 +85,10 @@ public class Ahorcado {
 	}
 
 	/**
-	 * Esta función se encarga de 
+	 * Esta función se encarga de comprobar si la letra pasada como parametro
+	 * aparece en la palabra secreta, si es así actualiza la palabraPista con la
+	 * letra. En caso contrario añade la letra a la variable noAcertadas.
+	 * 
 	 * @param letra
 	 */
 	public static void compruebaLetra(char letra) {
@@ -91,13 +101,17 @@ public class Ahorcado {
 		// bajo.
 		Arrays.fill(tablaPalabraPista, '_');
 
-		for (int i = 0; i < palabraSecreta.length(); i++) {
+		if (!palabraSecreta.contains(String.valueOf(letra))) {
+			noAcertadas += letra;
+		} else {
 
-			if (letra == palabraSecreta.charAt(i)) {
-				tablaPalabraPista[i] = letra;
-			} else {
-				noAcertadas += letra;
+			for (int i = 0; i < palabraSecreta.length(); i++) {
+
+				if (letra == palabraSecreta.charAt(i)) {
+					tablaPalabraPista[i] = letra;
+				}
 			}
 		}
+		palabraPista = String.valueOf(tablaPalabraPista);
 	}
 }
