@@ -12,13 +12,10 @@ public class Criptograma {
 
 	// Creamos el array frases como String para almacenar las frases con la que
 	// jugaremos y debemos de adivinar.
-	static String frases[] = { /*
-								 * "las guerras seguiran mientras el color de la piel siga siendo mas importante que el de los ojos"
-								 * , "aprende a vivir y sabras morir bien",
-								 * "cada dia sabemos mas y entendemos menos",
-								 * "el dinero no puede comprar la vida",
-								 * "la verdadera sabiduria esta en reconocer la propia ignorancia"
-								 */ "peo" };
+	static String frases[] = {
+			"las guerras seguiran mientras el color de la piel siga siendo mas importante que el de los ojos",
+			"aprende a vivir y sabras morir bien", "cada dia sabemos mas y entendemos menos",
+			"el dinero no puede comprar la vida", "la verdadera sabiduria esta en reconocer la propia ignorancia" };
 
 	// Creamos la variable fraseReal como String para almacenar la frase con la que
 	// vamos a jugar.
@@ -58,29 +55,14 @@ public class Criptograma {
 		// del abecedario.
 		desordenaAbecedario();
 
-		/*
-		 * BORRAR LUEGO (sin falta)
-		 */
-		for (char[] abcd : abecedario) {
-			for (char letraAbecidario : abcd) {
-				System.out.print(letraAbecidario + " ");
-			}
-			System.out.println();
-		}
-
 		// Llamamos a la función eligeFrase para asignar a la variable fraseReal una
 		// frase de forma aleatoria del array frases.
 		eligeFrase();
 
-		/*
-		 * BORRAR LUEGO
-		 */
-		System.out.println(fraseReal);
-
 		// Llamamos a la función codificaFrase frase almacenar en la fraseCodicada toda
 		// la codicación de la fraseReal.
 		codificaFrase();
-
+		
 		while (!fraseIguales) {
 
 			System.out.println(fraseCodificada);
@@ -262,7 +244,7 @@ public class Criptograma {
 		// A la variable copiaFraseCodificada se le remplaza los dobles espacios por
 		// solo uno.
 		copiaFraseCodificada = copiaFraseCodificada.replace("  ", " ");
-		
+
 		// Con este ternario asignamos a la variable iguales true si la cadena
 		// copiaFraseCodificada (igual que fraseCodificada, pero sin espacios entre
 		// letra y palabras) es igual qeu la fraseReal. En caso contrario devolvemos
