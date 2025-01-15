@@ -59,7 +59,7 @@ public class Criptograma {
 		desordenaAbecedario();
 
 		/*
-		 * BORRAR LUEGO
+		 * BORRAR LUEGO (sin falta)
 		 */
 		for (char[] abcd : abecedario) {
 			for (char letraAbecidario : abcd) {
