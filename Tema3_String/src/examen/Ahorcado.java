@@ -36,11 +36,6 @@ public class Ahorcado {
 	static Scanner sc = new Scanner(System.in);
 
 	/*
-	 * CORRECCIONES
-	 * 
-	 * Como controlar que me vuelve a msotrar el menú si introduzco cadenas o
-	 * caracteres.
-	 * 
 	 * Porque no se me actualiza la variable palabraPista cuando la acertamos.
 	 */
 	public static void main(String[] args) {
@@ -52,6 +47,10 @@ public class Ahorcado {
 		// Creamos la variable letra como char para almacenar la letra que desea probar
 		// el usuario.
 		char letra;
+
+		// Creamos la variable erroresPrevios como int para almacenar los errores
+		// previos, antes de llamar a la función compruebaLetra.
+		int erroresPrevios;
 
 		// Creamos la variable palabra como String para almacenar la palabra introducida
 		// por el usuario.
@@ -87,16 +86,17 @@ public class Ahorcado {
 				System.out.print("Introduce una letra: ");
 				letra = sc.next().toLowerCase().charAt(0);
 
+				// Almacenamos en la variable erroresPrevios la longitud de la variable
+				// noAcertadas.
+				erroresPrevios = noAcertadas.length();
+
 				// Llamamos a la función compruebaLetra para comprobar si la existe en la
 				// palabraPista, si es así se actualiza. Si no se añade a noAcertadas.
 				compruebaLetra(letra);
 
-				// Comprobamos si la letra que aparece en la variable noAcertadas devuelven las
-				// mismas posiciones contado desde el principio y el final. Así comprobamos que
-				// solo hay una y en ese caso debemos de restar un intento. Y luego compruebo si
-				// la posición de la letra no es -1 porque asi comprobamos que en ese no resten
-				// las que acertamos.
-				if (noAcertadas.indexOf(letra) == noAcertadas.lastIndexOf(letra) && noAcertadas.indexOf(letra) != -1) {
+				// Si el tamaño de noAcertadas ha cambiado, significa que la letra no estaba en
+				// la palabra.
+				if (noAcertadas.length() > erroresPrevios) {
 					NUMINTENTOS--;
 				}
 
@@ -193,7 +193,7 @@ public class Ahorcado {
 	 */
 	public static void compruebaLetra(char letra) {
 
-		if (!palabraSecreta.contains(String.valueOf(letra))) {
+		if (!palabraSecreta.contains(String.valueOf(letra)) && noAcertadas.indexOf(letra) < 0) {
 			noAcertadas += letra;
 		} else {
 
@@ -223,6 +223,12 @@ public class Ahorcado {
 		// parametro.
 		if (cadena.equals(palabraSecreta)) {
 			palabraPista = cadena;
+
+			// Actualizamos el array tablaPalabraPista con la palabra completa, para en el
+			// caso de acertar mostrar la palabra completa.
+			for (int i = 0; i < palabraSecreta.length(); i++) {
+				tablaPalabraPista[i] = palabraSecreta.charAt(i);
+			}
 		}
 	}
 
