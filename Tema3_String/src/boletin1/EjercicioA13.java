@@ -1,5 +1,6 @@
 package boletin1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -27,19 +28,19 @@ public class EjercicioA13 {
 
 		// Le pedimos al usuario que introduzca la primera palabra y la leemos
 		System.out.print("Introduce la primera palabra --> ");
-		palabra1 = sc.next();
+		palabra1 = sc.nextLine().toLowerCase();
 
 		// Le pedimos al usuario que introduzca la segunda palabra y la leemos
 		System.out.print("Introduce la segunda palabra --> ");
-		palabra2 = sc.next();
+		palabra2 = sc.nextLine().toLowerCase();
 
 		// A la variable resltAnagrama le pasamos el boleano que nos devuelve la función
 		// esAnagrama.
 		resltAnagrama = esAnagrama(palabra1, palabra2);
 
-		//Salto de linea
+		// Salto de linea
 		System.out.println();
-		
+
 		// Comprobamos si el resultado es true o false e imprimimos el respectivo
 		// mesaje.
 		if (resltAnagrama) {
@@ -64,29 +65,27 @@ public class EjercicioA13 {
 
 		// Creamos al variable reslt como boolean para almacenar el resultado de
 		// comprobar si las dos palabras son anagramas.
-		boolean reslt = true;
+		boolean reslt;
 
-		// Cramos la variable indice para recorrer cada caracter de la palabra.
-		int indice = 0;
+		// Creamos el array tablapalabra1 como char para almacenar cada letra en una
+		// posición del array de la palabra 1.
+		char tablapalabra1[] = new char[palabra1.length()];
 
-		// Comprobamos si el indice es menor que la longitud de la tabla y que el result
-		// sea true.
-		while (indice < palabra1.length() && reslt) {
+		// Creamos el array tablapalabra1¡2 como char para almacenar cada letra en una
+		// posición del array de la palabra 2.
+		char tablapalabra2[] = new char[palabra2.length()];
 
-			// Comprobamos si cada indice de la palabra2 aparece en la palabra1 si es así
-			// devuelve un valor positivo, pero si no devuelve negativo, si devuelve
-			// negativo ponemos reslt a false;
-			if (palabra1.indexOf(palabra2.charAt(indice)) < 0) {
-				reslt = false;
-			}
-			
-			if (palabra2.indexOf(palabra1.charAt(indice)) < 0) {
-				reslt = false;
-			}
-
-			// Incrementamos el indice a +1 en cada iteración.
-			indice++;
-		}
+		// Almacenamos en cada array cada una de las letra de las palabras haciendo uso
+		// de el metodo toCharArray para transforma cada palabra.
+		tablapalabra1 = palabra1.toCharArray();
+		tablapalabra2 = palabra2.toCharArray();
+		
+		//Ordenamos cada array haciendo uso del método sort.
+		Arrays.sort(tablapalabra1);
+		Arrays.sort(tablapalabra2);
+		
+		//Asignamos a la variable reslt true o false dependiendo de si son iguales o no cada array.
+		reslt = Arrays.equals(tablapalabra1, tablapalabra2);
 
 		// Devolvemos true o false dependiendo de si son anagramas o no.
 		return reslt;
