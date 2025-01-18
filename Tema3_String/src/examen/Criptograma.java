@@ -62,13 +62,21 @@ public class Criptograma {
 		// Llamamos a la función codificaFrase frase almacenar en la fraseCodicada toda
 		// la codicación de la fraseReal.
 		codificaFrase();
-		
+
+		// Con este while comprobamos si la fraseIgual (almacena el valor devuelto
+		// por la función sonIguales) nos devuelve true si las frases son iguales, false
+		// si no son iguales. Repetimos el bucle hasta que las frases sean iguales.
 		while (!fraseIguales) {
 
-			System.out.println(fraseCodificada);
+			// Imprimimos la fraseCodificada.
+			System.out.println("Frase codificada: \n" + fraseCodificada);
+			System.out.println();
 
+			// Le pedimos al usuario que introduzca un codigo y lo leemos.
 			System.out.print("Introduce un codigo --> ");
 			codigo = sc.nextLine();
+
+			// Le pedimos al usuario que introduzca una letra y la leemos.
 			System.out.print("Introduce la letra correspondiente --> ");
 			letra = sc.nextLine().charAt(0);
 
@@ -76,15 +84,25 @@ public class Criptograma {
 			// compruebaCodigo.
 			codigoAcertado = compruebaCodigo(codigo, letra);
 
+			// Comprobamos si el codigo y la letra pasados por parametro corresponden a la
+			// posición en el abecedario. Si es así muestra un mensaje de felicitación.
 			if (codigoAcertado) {
 				System.out.println("¡Bien hecho! Has acertado");
+				// Si no, mostramos un mensaje de consolación.
 			} else {
-				System.out.println("¡Lo siento! Intentelo de nuevo");
+				System.err.println("¡Lo siento! Intentelo de nuevo");
 			}
+			
+			//Salto de linea
+			System.out.println();
 
+			// Volvemos a asignar a la variable fraseIguales el valor devuelto por la
+			// función sonIguales.f
 			fraseIguales = sonIguales();
 		}
 
+		// Imprimimos un mensaje de felicitación al jugador porque acaba de descodificar
+		// la frase.
 		System.out.println("¡ENHORABUENA JUGADOR! Has conseguido descodificar la frase");
 
 		// Cierre de Scanner
