@@ -35,9 +35,6 @@ public class Ahorcado {
 	// consola.
 	static Scanner sc = new Scanner(System.in);
 
-	/*
-	 * Porque no se me actualiza la variable palabraPista cuando la acertamos.
-	 */
 	public static void main(String[] args) {
 
 		// Creamos la variable opcion como int para alamcenar la opción seleccioanda por
@@ -193,13 +190,23 @@ public class Ahorcado {
 	 */
 	public static void compruebaLetra(char letra) {
 
+		// Comprobamos si la letra pasada como parametro no aparece en la palabra
+		// secreta y si en la variable noAcertadas aparece la letra, para en el caso de
+		// que se vuelva a introducir no se vuelva a añadir otra vez.
 		if (!palabraSecreta.contains(String.valueOf(letra)) && noAcertadas.indexOf(letra) < 0) {
-			noAcertadas += letra;
-		} else {
 
+			// Almacenamos en la variable noAcertadas la letra que no se encuentra en la
+			// palabra secreta.
+			noAcertadas += letra;
+			
+			//Si no
+		} else {
+			//Recorremos la palabra secreta. 
 			for (int i = 0; i < palabraSecreta.length(); i++) {
 
+				//Comprobamos si la letra es igual a la letra que estamos recorriendo de la palabra secreta.
 				if (letra == palabraSecreta.charAt(i)) {
+					//Almacenamos en el aray tablaPalabraPista la letra.
 					tablaPalabraPista[i] = letra;
 				}
 			}
