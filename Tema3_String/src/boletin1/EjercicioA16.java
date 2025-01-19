@@ -43,7 +43,7 @@ public class EjercicioA16 {
 		// Inicializamos nuestro array a guiones.
 		Arrays.fill(tablaAnagrama, '-');
 
-		// Recorremos la tabla para cuando alla en al frase un espación en blanco en
+		// Recorremos la tabla para cuando haya en la frase un espacio en blanco en
 		// nuestro array tambien lo muestre, para señalar que ahí no hay ninguna letra.
 		for (int i = 0; i < tablaAnagrama.length; i++) {
 			// Comprobamos si en la posición de la frase hay un espacio en blanco, si es así
@@ -69,7 +69,7 @@ public class EjercicioA16 {
 			for (int i = 0; i < jugador2.length(); i++) {
 
 				// Comprobamos que la palabra introducida por el usuario no se recorra mas de la
-				// longitud de neustro array. Y comprobamos si coinciden las letras en las
+				// longitud de nuestro array. Y comprobamos si coinciden las letras en las
 				// mismas posiciones tanto la frase introducida por el jugador 2 como la del
 				// usuario que es la que hay que adivinar. Si es así, asignamos a la posición de
 				// la tabla la letra que coincide entre la opción del jugador 2 y el usuario.
