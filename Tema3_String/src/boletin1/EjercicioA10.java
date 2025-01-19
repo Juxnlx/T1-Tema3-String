@@ -25,21 +25,19 @@ public class EjercicioA10 {
 
 		// Creamos el array conjunto1 como char para almacenar todos los caracteres que
 		// deben de ser codificados.
-		char[] conjunto1 = { 'e', 'i', 'k', 'm', 'p', 'q', 'r', 's', 't', 'u', 'v' };
+		final char[] conjunto1 = { 'e', 'i', 'k', 'm', 'p', 'q', 'r', 's', 't', 'u', 'v' };
 
 		// Creamos el array conjunto2 como char para almacenar todos los caracteres por
 		// los que deben de ser ccodificados los caracteres de conjunto1.
-		char[] conjunto2 = { 'p', 'v', 'i', 'u', 'm', 't', 'e', 'r', 'k', 'q', 's' };
+		final char[] conjunto2 = { 'p', 'v', 'i', 'u', 'm', 't', 'e', 'r', 'k', 'q', 's' };
 
 		// Creamos el Scanner para leer la palabra introducida por el usuario.
 		Scanner sc = new Scanner(System.in);
 
-		// Le pedimos al usuario que introduzca una palabra y la leemos
+		// Le pedimos al usuario que introduzca una palabra y la leemos, una vez
+		// introducida la almacenamos en minuscula.
 		System.out.print("Introduce una palabra --> ");
-		palabra = sc.nextLine();
-
-		// Pasamos la palabra introducida por el usuario a minuscula.
-		palabra = palabra.toLowerCase();
+		palabra = sc.nextLine().toLowerCase();
 
 		// Con este for vamos recorriendo cada caracter de la palabra introducida por el
 		// usuario.
@@ -99,8 +97,8 @@ public class EjercicioA10 {
 			if (c == conjunto1[i]) {
 				caracterDevolver = conjunto2[i];
 			}
-			
-			//Incrementamos en +1 la posición.
+
+			// Incrementamos en +1 la posición.
 			i++;
 		}
 
