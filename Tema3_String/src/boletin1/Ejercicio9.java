@@ -82,7 +82,7 @@ public class Ejercicio9 {
 			System.out.println(frase);
 		}
 
-		// Cierre de Scanner
+		// Cierre de Scanner.
 		sc.close();
 	}
 
