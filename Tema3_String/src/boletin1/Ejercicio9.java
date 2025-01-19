@@ -15,13 +15,13 @@ public class Ejercicio9 {
 		// el usuario.
 		String frase = "";
 
-		// Creamos la variable prefijo para almacenar las palabras por las que comienzan
+		// Creamos la constante prefijo para almacenar las palabras por las que comienzan
 		// las frases los habitante de javalandia.
-		String prefijo = "Javalín, javalón";
+		final String prefijo = "Javalín, javalón";
 
 		// Creamos la variable sufijo para almacenar las palabras por las que terminan
 		// las frases los habitante de javalandia.
-		String sufijo = "javalén, len, len";
+		final String sufijo = "javalén, len, len";
 
 		// Creamos la varible pos para almacenar la posición por la que debemos de
 		// empezar a agrupar la nueva frase o cual es la ultima posición hasta donde
