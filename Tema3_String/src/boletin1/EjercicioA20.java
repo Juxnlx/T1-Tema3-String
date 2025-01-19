@@ -111,7 +111,7 @@ public class EjercicioA20 {
 
 				// Con el else comprobamos que la pos + secuencia no sea mayor que la longitud
 				// de la palabra. Eso significa que nos encontramos en la ultima posición y que
-				// no la vamos a rellenar con la secuencia introducida si no con las qeu sobren
+				// no la vamos a rellenar con la secuencia introducida si no con las que sobre
 				// que seran menos.
 			} else {
 
