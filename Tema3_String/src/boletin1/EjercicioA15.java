@@ -95,7 +95,7 @@ public class EjercicioA15 {
 	}
 
 	/**
-	 * Esta función se encarga de transformar la frase pasado como parametro y en
+	 * Esta función se encarga de transformar la frase pasada como parametro y en
 	 * convertirla en anagrama.
 	 * 
 	 * @param frase La frase introducida por el usuario.
