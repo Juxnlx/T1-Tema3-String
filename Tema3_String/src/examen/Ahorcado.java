@@ -13,7 +13,7 @@ public class Ahorcado {
 
 	// Creamos la la constante NUMINTENTOS para almacenar el número de intentos que
 	// tiene el jugador.
-	static int NUMINTENTOS = 7;
+	static final int NUMINTENTOS = 7;
 
 	// Creamos la variable palabraSecreta como String para almacenar la palabra
 	// secreta que debe de acertar el jugador.
@@ -45,6 +45,10 @@ public class Ahorcado {
 		// el usuario.
 		char letra;
 
+		// Creamos la variable intentos como int para almacenar los intentos restantes
+		// sin modificar la constante NUMINTENTOS.
+		int intentos = NUMINTENTOS;
+
 		// Creamos la variable erroresPrevios como int para almacenar los errores
 		// previos, antes de llamar a la función compruebaLetra.
 		int erroresPrevios;
@@ -67,8 +71,11 @@ public class Ahorcado {
 		// Llamamos a la función pintaPista para imprimir los huecos de cada palabra.
 		pintaPista();
 
-		// Comprobación de fin de juego.
-		do {
+		
+		// Comprobamos si la palabra es distinta a la palabra que intentamos adivinar y
+		// si los números de intentos son distintos de 0 volvemos a preguntar una
+		// opción.
+		while (!palabra.equals(palabraSecreta) && intentos != 0) {
 			// Comprobación de si la opción del usuario es correcta.
 			do {
 				// Asignamos a la variable opcion, lo que nos devuelve la función menu.
@@ -77,8 +84,8 @@ public class Ahorcado {
 				// 2, si es así volvemos a preguntar.
 			} while (opcion < 1 || opcion > 2);
 
-			// Comprobamos si la opción es igual a 1.
-			if (opcion == 1) {
+			switch (opcion) {
+			case 1 -> {
 				// Le pedimos al usuario que introduzca una letra y la leemos.
 				System.out.print("Introduce una letra: ");
 				letra = sc.next().toLowerCase().charAt(0);
@@ -94,11 +101,11 @@ public class Ahorcado {
 				// Si el tamaño de noAcertadas ha cambiado, significa que la letra no estaba en
 				// la palabra.
 				if (noAcertadas.length() > erroresPrevios) {
-					NUMINTENTOS--;
+					intentos--;
 				}
 
-				// Si no es 1 ...
-			} else {
+			}
+			case 2 -> {
 				// Le pedimos al usuario que introduzca una palabra y la leemos.
 				System.out.print("Introduce una palabra: ");
 				palabra = sc.next().toLowerCase();
@@ -110,25 +117,24 @@ public class Ahorcado {
 				// Comprobamos si la palabra es distinta a la palabra que intentamos descubir.
 				// Si es así incrementamos los números de intentos en -1.
 				if (!palabra.equals(palabraSecreta)) {
-					NUMINTENTOS--;
+					intentos--;
 				}
+			}
 			}
 
 			// Llamamos a la función pintaPista para imprimir las letras no acertadas y la
 			// pista.
 			pintaPista();
+
 			// Imprimimos el número de intentos que nos quedan.
-			System.out.println("Intentos --> " + NUMINTENTOS);
+			System.out.println("Intentos --> " + intentos);
 			System.out.println();
 
-			// Comprobamos si la palabra es distinta a la palabra que intentamos adivinar y
-			// si los números de intentos son distintos de 0 volvemos a preguntar una
-			// opción.
-		} while (!palabra.equals(palabraSecreta) && NUMINTENTOS != 0);
+		}
 
 		// Si los intentos son mayor que 0, mostramos un enhorabuena. Significa que
 		// hemos acertado la palabra.
-		if (NUMINTENTOS > 0) {
+		if (intentos > 0) {
 			System.out.println("¡¡ENHORABUENA!! HAS ACERTADO");
 			// Si no, mostramos game over porque el número de intentos se ha agotado.
 		} else {
@@ -198,15 +204,16 @@ public class Ahorcado {
 			// Almacenamos en la variable noAcertadas la letra que no se encuentra en la
 			// palabra secreta.
 			noAcertadas += letra;
-			
-			//Si no
+
+			// Si no
 		} else {
-			//Recorremos la palabra secreta. 
+			// Recorremos la palabra secreta.
 			for (int i = 0; i < palabraSecreta.length(); i++) {
 
-				//Comprobamos si la letra es igual a la letra que estamos recorriendo de la palabra secreta.
+				// Comprobamos si la letra es igual a la letra que estamos recorriendo de la
+				// palabra secreta.
 				if (letra == palabraSecreta.charAt(i)) {
-					//Almacenamos en el aray tablaPalabraPista la letra.
+					// Almacenamos en el aray tablaPalabraPista la letra.
 					tablaPalabraPista[i] = letra;
 				}
 			}
